@@ -1,35 +1,26 @@
-/**
- * MIT License
- *
- * Copyright (c) 2024 Steven Mu
- *
- * Permission is hereby granted, free of charge, to any person obtaining a copy
- * of this software and associated documentation files (the "Software"), to deal
- * in the Software without restriction, including without limitation the rights
- * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- * copies of the Software, and to permit persons to whom the Software is
- * furnished to do so, subject to the following conditions:
- *
- * The above copyright notice and this permission notice shall be included in all
- * copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
- * WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR
- * IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-*/
-
-#include <stdio.h>
-#include <stdint.h>
 #include "delay.h"
+#include "gpio.h"
 
-// -- delay function definition
-void delay( uint32_t t ) {
-    uint32_t cycles = (t * 8400000) / 4000; // 4 instructions/iteration in the for loop * 1000ms / s
+struct systick {
+  volatile uint32_t CTRL, LOAD, VAL, CALIB;
+};
+#define SYSTICK ((struct systick *) 0xe000e010)
 
-    for (uint32_t i=0; i<cycles; i++) {
-        __asm__("NOP");
-    }
+volatile uint32_t s_ticks;
+
+void systick_init(uint32_t ticks) {
+	if ((ticks - 1) > 0xffffff) return;  		// systick timer is 24 bit
+	SYSTICK->LOAD = ticks - 1;
+	SYSTICK->VAL = 0;
+	SYSTICK->CTRL = BIT(0) | BIT(1) | BIT(2);  	// enable systick
+	RCC->APB2ENR |= BIT(14);                   	// enable SYSCFG
+}
+
+void SysTick_Handler(void) {
+	s_ticks++;
+}
+
+void delay(unsigned ms) {
+	uint32_t until = s_ticks + ms;      			// future "stoppage time"
+	while (s_ticks < until) (void) 0;   			// polling
 }
