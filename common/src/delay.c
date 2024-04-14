@@ -8,7 +8,7 @@ struct systick {
 
 volatile uint32_t s_ticks;
 
-void systick_init(uint32_t ticks) {
+void systickInit(uint32_t ticks) {
 	if ((ticks - 1) > 0xffffff) return;  		// systick timer is 24 bit
 	SYSTICK->LOAD = ticks - 1;
 	SYSTICK->VAL = 0;
