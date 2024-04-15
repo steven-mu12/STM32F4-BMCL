@@ -13,6 +13,8 @@ A Bare-Metal Component library (BMCL) for STM32F4 Series Chips. Done using only 
 2. make sure to include the header file of the component you are trying to use
 3. read the documentation for each library in the "docs" folder, as well as check out some example code snippets in the "examples" folder
 
+https://smu1215.atlassian.net/wiki/spaces/~60146ef7d047850068701422/pages/262164/1602A+LCD+Driver+Usage+Guide
+
 
 ## Contribute
 
