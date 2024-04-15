@@ -11,7 +11,7 @@ A Bare-Metal Component library (BMCL) for STM32F4 Series Chips. Done using only 
 ## Usage
 1. download the inc and src folders and add them to working directory
 2. make sure to include the header file of the component you are trying to use
-3. read the documentation for each library (confluence link below), as well as check out some example code snippets in the "examples" folder
+3. read the documentation for each library in the "docs" folder, as well as check out some example code snippets in the "examples" folder
 
 
 ## Contribute
