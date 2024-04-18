@@ -4,14 +4,19 @@ A Bare-Metal Component library (BMCL) for STM32F4 Series Chips. Done using only 
 
 ## List of Supported Components + Drivers
 - GPIO Driver capable of digital input / output
-- Delay (ms accurate, using Systick & Interrupt)
+- Delay (ms accurate, using Systick & Interrupt - us accurate coming soon!)
 - 1602A LCD Display
+- HC-SR04 Ultrasonic Distance Sensor (Coming soon!)
+- SSD1306 OLED display via I2C (Coming soon!)
+- SG90 Servo Motor Analog Control (Coming soon!)
 
 
 ## Usage
 1. download the inc and src folders and add them to working directory
 2. make sure to include the header file of the component you are trying to use
-3. read the documentation for each library (confluence link below), as well as check out some example code snippets in the "examples" folder
+3. read the documentation for each library in the "docs" folder, as well as check out some example code snippets in the "examples" folder
+
+https://smu1215.atlassian.net/wiki/spaces/~60146ef7d047850068701422/pages/262164/1602A+LCD+Driver+Usage+Guide
 
 
 ## Contribute
