@@ -4,7 +4,7 @@ A Bare-Metal Component library (BMCL) for STM32F4 Series Chips. Done using only 
 
 ## List of Supported Components + Drivers
 - GPIO Driver capable of digital input / output
-- Delay (ms accurate, using Systick & Interrupt - us accurate coming soon!)
+- Delay (ms accurate, using Systick & Interrupt - us accurate using hardware timer TIM2)
 - 1602A LCD Display
 - HC-SR04 Ultrasonic Distance Sensor (Coming soon!)
 - SSD1306 OLED display via I2C (Coming soon!)
