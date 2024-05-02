@@ -5,6 +5,7 @@ A Bare-Metal Component library (BMCL) for STM32F4 Series Chips. Done using only 
 
 #### Quick Demo of LCD & HCSR04
 
+https://github.com/steven-mu12/STM32F4-BMCL/assets/62585035/1834d41c-cd0b-4a6b-98e8-7bb14b566c2b
 
 
 ## List of Supported Components + Drivers
