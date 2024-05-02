@@ -39,11 +39,14 @@ void gpioPinmode(uint16_t pin, uint8_t mode) {
 void gpioDigitalWrite(uint16_t pin, bool val) {
 
     struct gpio *gpio = GPIO(PINBANK(pin));
-    gpio->BSRR = (1U << PINNUM(pin)) << (val ? 0 : 16);     // shift 0b1 left by the amount of pins. Then shift it left by another 0 or 16 (if val == 0 then 16). Basically we acess the "set" bit if true, "reset" bit if false. Again stare at datasheet BSRR for a sec if confused.
+    gpio->BSRR = (1U << PINNUM(pin)) << (val ? 0 : 16);     // shift 0b1 left by the amount of pins. Then shift it left by another 0 or 16 (if val == 0 then 16). Basically we access the "set" bit if true, "reset" bit if false. Again stare at datasheet BSRR for a sec if confused.
                                                             // it's also atomic (cant be interrupted, and when done it auto "clears" itself so we don't need to clear BSRR beore using
 }
 
+bool gpioDigitalRead( uint16_t pin ) {
 
-// // SAMPLE USAGE OF THE ABOVE
-// uint16_t pin = PIN('A', 3);            // define pin A3
-// gpio_set_mode(pin, GPIO_MODE_OUTPUT);  // set some pin to output
+	struct gpio *gpio = GPIO(PINBANK(pin));
+	return( (gpio->IDR) & ( BIT( PINNUM(pin) ) ) );			// access the pin-th bit in gpio's IDR register to see if specific pin is high or not
+
+}
+

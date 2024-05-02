@@ -18,7 +18,7 @@ A Bare-Metal Component library (BMCL) for STM32F4 Series Chips. Done using only 
 
 
 ## Contribute
-You are welcomed to contribute to this repository, if you have another component that you would add support for, please open a PR. 
+You are welcomed to contribute to this repository, if you have another component that you would add support for, please open a PR. Note that everything must be built off resources in this repository, as to make this an independent project that isn't dependent on any external sources
 
 
 ## License

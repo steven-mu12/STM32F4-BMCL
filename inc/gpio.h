@@ -56,7 +56,7 @@ struct gpio {
 // -- MEMBER FUNCTIONS --
 void gpioPinmode(uint16_t pin, uint8_t mode);
 void gpioDigitalWrite( uint16_t pin, bool value) ;
-
+bool gpioDigitalRead( uint16_t pin );
 
 
 #endif
