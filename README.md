@@ -1,12 +1,17 @@
 # STM32F4-BMCL
 A Bare-Metal Component library (BMCL) for STM32F4 Series Chips. Done using only C and Assembly Language with manufacturer documentations. 
 
+<img src="./docs/resources/bmcl.png"></img>
+
+#### Quick Demo of LCD & HCSR04
+
+
 
 ## List of Supported Components + Drivers
 - GPIO Driver capable of digital input / output
 - Delay (ms accurate, using Systick & Interrupt - us accurate using hardware timer TIM2)
 - 1602A LCD Display
-- HC-SR04 Ultrasonic Distance Sensor (Coming soon!)
+- HC-SR04 Ultrasonic Distance Sensor
 - SSD1306 OLED display via I2C (Coming soon!)
 - SG90 Servo Motor Analog Control (Coming soon!)
 
